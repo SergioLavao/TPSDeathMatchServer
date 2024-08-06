@@ -58,12 +58,13 @@ func play_server_pressed():
 	
 	if executable_file_dialog not in get_children():
 		add_child( executable_file_dialog )
-		
+	
 	executable_file_dialog.popup()
 	executable_file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_ANY
 	executable_file_dialog.access = FileDialog.ACCESS_FILESYSTEM
 	
-	executable_file_dialog.root_subfolder = "/"
+	if _platform == _macos:
+		executable_file_dialog.root_subfolder = "/"
 	
 	executable_file_dialog.ok_button_text = "Select App"
 	executable_file_dialog.file_selected.connect( self.set_application_path_file )

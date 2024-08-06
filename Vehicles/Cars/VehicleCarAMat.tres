@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cu6ugilj3e534"]
+
+[ext_resource type="Texture2D" uid="uid://ci378ioh6weeq" path="res://3DModels/Characters/Vehicles/car/car_material_baseColor.png" id="1_eotvm"]
+
+[resource]
+resource_name = "material"
+cull_mode = 2
+albedo_texture = ExtResource("1_eotvm")
+metallic_specular = 0.0
