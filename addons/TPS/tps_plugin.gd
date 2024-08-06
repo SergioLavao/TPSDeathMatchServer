@@ -34,7 +34,7 @@ func _enter_tree():
 	_find_button( interface, buttons)
 	
 	custom_play_button.set_meta("custom_editor_tps", "_play")
-	custom_play_button.text = "Run Server"
+	custom_play_button.text = "Run Local Server"
 	custom_play_button.pressed.connect(self.play_server_pressed)
 
 	custom_build_button.set_meta("custom_editor_tps", "_build")
@@ -42,7 +42,7 @@ func _enter_tree():
 	custom_build_button.pressed.connect( self.build_server_pressed )
 	
 	custom_stop_button.set_meta("custom_editor_tps", "_build")
-	custom_stop_button.text = "Stop Server"
+	custom_stop_button.text = "Stop Local Server"
 	custom_stop_button.pressed.connect( self.stop_server_pressed )
 	custom_stop_button.disabled = true
 	
@@ -116,12 +116,16 @@ func set_application_path():
 	custom_stop_button.disabled = false
 
 func build_server_pressed():
-	build_server()
+	build_server( "res://Exports/" )
 
-func build_server():
+func build_server( export_path : String = "local"):
 	
 	var servers = []
-	var path = OS.get_data_dir() + "/TPS_MP/SERVERS/"
+	
+	var path = export_path
+	
+	if path == "local":
+		path = OS.get_data_dir() + "/TPS_MP/SERVERS/"
 	
 	var dir = DirAccess.open( path )
 	

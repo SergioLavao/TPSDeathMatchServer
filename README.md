@@ -47,7 +47,7 @@ Due to the early development, we highly recommend to join the [Discord Server](h
 
 ## API
 
-The project provides server functions to build you own game such as the following example: 
+The project provides server functions to build you own game server such as the following example: 
 
 ``` 
 
@@ -81,5 +81,16 @@ func on_player_spawned( playerID : int ):
 
 - Ensure you have the latest version of Godot installed and TPS Version.
 - If you encounter any issues during the build process, leave a message on the [Discord Server](https://discord.gg/QHnXgEeN)
+
+Happy coding!
+
+## Credits
+
+3D Models: 
+
+- [NewViStudios](https://sketchfab.com/newvistudios)
+
+https://sketchfab.com/3d-models/ussr-vaz-2108-c9e297b856594cbf936c63321253b6b5
+https://sketchfab.com/vinrax
 
 Happy coding!

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://1dmhw2gn7f41"]
+[gd_scene load_steps=18 format=3 uid="uid://1dmhw2gn7f41"]
 
 [ext_resource type="Script" path="res://Scripts/server.gd" id="1_n7nh6"]
 [ext_resource type="Texture2D" uid="uid://d0bkhdaim8ohq" path="res://Textures/PNG/Red/texture_04.png" id="2_8vagb"]
@@ -68,6 +68,8 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ddww"]
 albedo_texture = ExtResource("4_ckscd")
 uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3ho33"]
 
 [node name="Server" type="Node" node_paths=PackedStringArray("criminalSpawnPoint", "swatSpawnPoint")]
 script = ExtResource("1_n7nh6")
@@ -332,14 +334,17 @@ use_collision = true
 size = Vector3(8, 1.1, 0.2)
 material = SubResource("StandardMaterial3D_5ddww")
 
+[node name="CSGMesh3D" type="CSGMesh3D" parent="World"]
+mesh = SubResource("CylinderMesh_3ho33")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.859033, 3.67673)
 
 [node name="CriminalSpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4421, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4421, 0.226112, 0)
 
 [node name="SwatSpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6663, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6663, 0.177852, 0)
 
 [node name="VehicleCarA" parent="." instance=ExtResource("8_sxr1a")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.9085, 0.804708, -6.9749)
