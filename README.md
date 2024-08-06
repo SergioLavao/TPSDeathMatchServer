@@ -1,3 +1,18 @@
+# TPS Multiplayer Godot Project Setup Instructions
+
+Here are some pictures of the project:
+
+![Project Image 1](path_to_image_1.png)
+*Description of Image 1*
+
+![Project Image 2](path_to_image_2.png)
+*Description of Image 2*
+
+![Project Image 3](path_to_image_3.png)
+*Description of Image 3*
+
+# Project Setup Instructions
+
 ## Prerequisites
 
 Before you start building the Godot Project, make sure you have the required files downloaded and set up based on your operating system.
