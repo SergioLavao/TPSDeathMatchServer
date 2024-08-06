@@ -6,8 +6,6 @@
 
 [![badge](https://img.shields.io/discord/1259301606051283035)](https://discord.gg/QHnXgEeN)
 
-[![badge](https://img.shields.io/discord/1259301606051283035?label=discord&style=flat-square)](https://discord.gg/QHnXgEeN)
-
 # Project Setup Instructions
 
 ## Prerequisites
@@ -37,6 +35,11 @@ Follow these steps to ensure a smooth build process:
 1. Open the Godot editor.
 2. Load the project.
 3. Use the specified buttons (as shown in the image above) to run and build the server.
+4. Select the downloaded .exe in the previous step 
+
+![Image of buttons](./Images/AppSelection.png)
+
+# Documentation
 
 ## Additional Notes
 
