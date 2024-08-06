@@ -39,7 +39,43 @@ Follow these steps to ensure a smooth build process:
 
 ![Image of buttons](./Images/AppSelection.png)
 
+Enjoy!
+
 # Documentation
+
+Due to the early development, we highly recommend to join the [Discord Server](https://discord.gg/QHnXgEeN) to solve questions about the API and the functions provided 
+
+## API
+
+The project provides server functions to build you own game such as the following example: 
+
+``` 
+
+extends Node
+
+@export var characters: Array[ PackedScene ]
+@export var criminalSpawnPoint : Marker3D
+@export var swatSpawnPoint : Marker3D
+
+var _player_counter : int = 0
+
+func _init():
+	GDServer.SetOnPlayerSpawnedFunction( on_player_spawned )
+
+func _ready():
+	GDLogger.WriteLine("_server_version_", "Server: v1.1.0", Color.WHITE )
+	GDCharacterModels.BindModels( characters )
+
+func on_player_spawned( playerID : int ):
+	_player_counter += 1
+	
+	if _player_counter % 2 == 0: #If its odd go to Criminal Team
+		GDCharacterSpawner.SpawnPlayerCharacter( criminalSpawnPoint.global_position , Vector3.UP, playerID, 0 )
+	
+	if _player_counter % 2 != 0: #If its even go to SWAT Team
+		GDCharacterSpawner.SpawnPlayerCharacter( swatSpawnPoint.global_position , Vector3.UP, playerID, 1 )
+
+``` 
 
 ## Additional Notes
 
