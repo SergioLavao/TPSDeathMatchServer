@@ -7,7 +7,15 @@ var custom_play_button : Button = Button.new()
 var custom_build_button : Button = Button.new()
 var custom_stop_button : Button = Button.new()
 
+var pids : Array[ int ] = []
+
+var _macos : String = "macOS"
+var _windows : String = "Windows"
+var _platform : String
+
 func _enter_tree():
+	
+	_platform = OS.get_name()
 	
 	# Get the editor interface
 	var editor_interface = get_editor_interface()
@@ -54,25 +62,49 @@ func play_server_pressed():
 	executable_file_dialog.popup()
 	executable_file_dialog.file_mode = FileDialog.FILE_MODE_OPEN_ANY
 	executable_file_dialog.access = FileDialog.ACCESS_FILESYSTEM
+	
 	executable_file_dialog.root_subfolder = "/"
+	
 	executable_file_dialog.ok_button_text = "Select App"
+	executable_file_dialog.file_selected.connect( self.set_application_path_file )
 	executable_file_dialog.confirmed.connect( self.set_application_path )
 
 func stop_server_pressed():
+	
+	#Windows
+	if _platform == _windows:
+		for pid in pids:
+			print( pid )
+			OS.kill( pid )
+	
+	#MacOS
+	if _platform == _macos:
+		OS.execute("pkill", ["-9", "TPS_MP"])
+	
 	custom_play_button.disabled = false
 	custom_build_button.disabled = false
 	custom_stop_button.disabled = true
-	OS.execute("pkill", ["-9", "TPS_MP"])
+
+func set_application_path_file( path : String ):
+	set_application_path()
 
 func set_application_path():
 	
 	build_server()
 	
-	var cmd : String = "open"
-	var args_server = [ "-n", "/" + executable_file_dialog.current_path.left(-1) , "--args", '"--local"', '"--server"', '"--headless"']
-	var args_client = [ "-n", "/" + executable_file_dialog.current_path.left(-1) , "--args", '"--local"', '"--dummy_client"']
-	OS.execute( cmd , args_server )
-	OS.execute( cmd , args_client )
+	#WIN
+	if _platform == _windows:
+		pids.append( OS.create_process( executable_file_dialog.current_path , ["--args", '"--headless"' ,'"--local"', '"--server"'], false ) )
+		pids.append( OS.create_process( executable_file_dialog.current_path , ["--args",'"--local"', '"--dummy_client"'], false ) )
+	
+	#MacOS
+	if _platform == _macos:
+		var cmd : String = "open"
+		var args_server = [ "-n", "/" + executable_file_dialog.current_path.left(-1) , "--args", '"--local"', '"--server"', '"--headless"']
+		var args_client = [ "-n", "/" + executable_file_dialog.current_path.left(-1) , "--args", '"--local"', '"--dummy_client"']
+		OS.execute( cmd , args_server )
+		OS.execute( cmd , args_client )
+	
 	custom_play_button.disabled = true
 	custom_build_button.disabled = true
 	custom_stop_button.disabled = false
@@ -101,7 +133,6 @@ func build_server():
 func _find_button(button, buttons):
 	if button is Button:
 		buttons.append(button)
-
 	for child in button.get_children():
 		if child is Control:
 			var result = _find_button(child, buttons)
