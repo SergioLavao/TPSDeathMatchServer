@@ -4,6 +4,8 @@
 	<a><img src="./Images/Logo.png"></a>
 </p>
 
+[![badge](https://img.shields.io/discord/1259301606051283035)](https://discord.gg/QHnXgEeN)
+
 [![badge](https://img.shields.io/discord/1259301606051283035?label=discord&style=flat-square)](https://discord.gg/QHnXgEeN)
 
 # Project Setup Instructions
