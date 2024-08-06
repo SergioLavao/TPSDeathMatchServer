@@ -4,6 +4,8 @@
 	<a><img src="./Images/Logo.png"></a>
 </p>
 
+[![badge](https://img.shields.io/discord/1259301606051283035?label=discord&style=flat-square)](https://discord.gg/QHnXgEeN)
+
 # Project Setup Instructions
 
 ## Prerequisites
@@ -19,7 +21,7 @@ Before you start building the Godot Project, make sure you have the required fil
 ### MacOS
 
 1. Download the file from the following link:
-   [build_winx86_v0.0.9.zip](https://tpsmp-builds.s3.amazonaws.com/experimental/build_winx86_v0.0.9.zip)
+   [build_macos_v0.0.9.zip](https://tpsmp-builds.s3.amazonaws.com/experimental/build_macos_v0.0.9.zip)
 2. Install the downloaded file.
 
 ## Building the Server
