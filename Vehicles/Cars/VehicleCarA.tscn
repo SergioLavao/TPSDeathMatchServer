@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmvbi7vg8jqr4"]
+
+[ext_resource type="Script" path="res://API/Vehicles/GDVehicleCar.gd" id="1_xwe8a"]
+[ext_resource type="Script" path="res://API/Vehicles/GDVehicleSeat.gd" id="2_ucm8c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bml0c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nd3rj"]
+size = Vector3(1, 1, 2.96825)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wvfe6"]
+size = Vector3(0.5, 1, 1)
+
+[node name="VehicleCarA" type="VehicleBody3D"]
+script = ExtResource("1_xwe8a")
+
+[node name="DriverSeat" type="Node" parent="."]
+script = ExtResource("2_ucm8c")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506498, 0)
+mesh = SubResource("BoxMesh_bml0c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502094, -0.0154037)
+shape = SubResource("BoxShape3D_nd3rj")
+
+[node name="VehicleWheel3D" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.532203, -0.353202, 1.29887)
+use_as_steering = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.35
+wheel_rest_length = 0.1
+suspension_stiffness = 100.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D"]
+visible = false
+mesh = SubResource("BoxMesh_wvfe6")
+
+[node name="VehicleWheel3D2" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.532203, -0.353202, -1.41203)
+use_as_traction = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.35
+wheel_rest_length = 0.1
+suspension_stiffness = 100.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D2"]
+visible = false
+mesh = SubResource("BoxMesh_wvfe6")
+
+[node name="VehicleWheel3D3" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4241, -0.353202, 1.29887)
+use_as_steering = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.35
+wheel_rest_length = 0.1
+suspension_stiffness = 100.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D3"]
+visible = false
+mesh = SubResource("BoxMesh_wvfe6")
+
+[node name="VehicleWheel3D4" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4241, -0.353202, -1.41203)
+use_as_traction = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.35
+wheel_rest_length = 0.1
+suspension_stiffness = 100.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D4"]
+visible = false
+mesh = SubResource("BoxMesh_wvfe6")

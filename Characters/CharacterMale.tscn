@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://hhut8u14k6xc"]
+
+[ext_resource type="PackedScene" uid="uid://cilmng1gplnoe" path="res://3DModels/Characters/Humanoids/male/male.glb" id="1_nwcwl"]
+
+[sub_resource type="GDScript" id="GDScript_i0uw1"]
+script/source = "extends Node3D
+class_name GDCharacter
+
+@export var character_mesh : MeshInstance3D
+
+func _enter_tree():
+	print( character_mesh )
+"
+
+[node name="CharacterMale" type="Node3D" node_paths=PackedStringArray("character_mesh")]
+script = SubResource("GDScript_i0uw1")
+character_mesh = NodePath("male/rig/Skeleton3D/Mesh")
+
+[node name="male" parent="." instance=ExtResource("1_nwcwl")]
+
+[editable path="male"]
