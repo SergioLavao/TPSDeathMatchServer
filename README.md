@@ -43,7 +43,7 @@ Enjoy!
 
 # Documentation
 
-Due to the early development, we highly recommend to join the [Discord Server](https://discord.gg/QHnXgEeN) to solve questions about the API and the functions provided 
+Due to the early development (experimental), we highly recommend to join the [Discord Server](https://discord.gg/QHnXgEeN) to solve questions about the API and the functions provided 
 
 ## API
 
@@ -89,8 +89,3 @@ Happy coding!
 3D Models: 
 
 - [NewViStudios](https://sketchfab.com/newvistudios)
-
-https://sketchfab.com/3d-models/ussr-vaz-2108-c9e297b856594cbf936c63321253b6b5
-https://sketchfab.com/vinrax
-
-Happy coding!
