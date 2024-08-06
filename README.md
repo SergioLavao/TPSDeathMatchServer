@@ -1,4 +1,11 @@
-# TPS Multiplayer Godot Project Setup Instructions
+# TPS Multiplayer Godot Project
+
+<p align="center">
+	<a href="https://jblaha.art/sketchbook/latest"><img src="./src/img/thumbnail.png"></a>
+	<br>
+	<a href="https://jblaha.art/sketchbook/latest">Live demo</a>
+	<br>
+</p>
 
 Here are some pictures of the project:
 
