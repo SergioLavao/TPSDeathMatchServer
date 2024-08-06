@@ -20,4 +20,4 @@ project/assembly_name="CIT_ServerEditor"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/serverplaybutton/plugin.cfg")
+enabled=PackedStringArray("res://addons/TPS/plugin.cfg", "res://addons/serverplaybutton/plugin.cfg")

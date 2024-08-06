@@ -286,7 +286,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_mdj0r")
 
 [node name="Shape" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1.2, 4.18544e-16, -1.81195e-07, 4.18544e-16, 1.2, -4.18544e-16, 1.81195e-07, -4.18544e-16, -1.2, 0, -0.399314, 0.228359)
+transform = Transform3D(-1.15, 4.01105e-16, -1.73645e-07, 4.01105e-16, 1.15, -4.01105e-16, 1.73645e-07, -4.01105e-16, -1.15, 0, -0.32425, 0.228359)
 shape = SubResource("ConvexPolygonShape3D_fx3in")
 
 [editable path="car"]

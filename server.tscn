@@ -342,4 +342,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4421, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6663, 0, 0)
 
 [node name="VehicleCarA" parent="." instance=ExtResource("8_sxr1a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.385, 0.804708, 2.64106)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.9085, 0.804708, -6.9749)
