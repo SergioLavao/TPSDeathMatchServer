@@ -1,22 +1,8 @@
 # TPS Multiplayer Godot Project
 
 <p align="center">
-	<a href="https://jblaha.art/sketchbook/latest"><img src="./src/img/thumbnail.png"></a>
-	<br>
-	<a href="https://jblaha.art/sketchbook/latest">Live demo</a>
-	<br>
+	<a><img src="./Images/Logo.png"></a>
 </p>
-
-Here are some pictures of the project:
-
-![Project Image 1](path_to_image_1.png)
-*Description of Image 1*
-
-![Project Image 2](path_to_image_2.png)
-*Description of Image 2*
-
-![Project Image 3](path_to_image_3.png)
-*Description of Image 3*
 
 # Project Setup Instructions
 
@@ -40,7 +26,7 @@ Before you start building the Godot Project, make sure you have the required fil
 
 Once you have the required files downloaded and set up, you can run and build the server using the following buttons:
 
-![Image of buttons](path_to_image_of_buttons.png)
+![Image of buttons](./Images/Buttons.png)
 
 Follow these steps to ensure a smooth build process:
 
@@ -50,7 +36,7 @@ Follow these steps to ensure a smooth build process:
 
 ## Additional Notes
 
-- Ensure you have the latest version of Godot installed.
-- If you encounter any issues during the build process, refer to the official Godot documentation or seek help from the Godot community.
+- Ensure you have the latest version of Godot installed and TPS Version.
+- If you encounter any issues during the build process, leave a message on the [Discord Server](https://discord.gg/QHnXgEeN)
 
 Happy coding!
