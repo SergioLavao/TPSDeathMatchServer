@@ -182,6 +182,6 @@ func _request_api_version():
 func _on_api_version_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	if json["version"] == _TPS_API_Version:
-		print_rich("[color=#7CFC00]Valid TPS API version![/color]")
+		print_rich("[color=#7CFC00]"+str(json["message_valid"])+"![/color]")
 	else:
-		print_rich("[color=#FFA500]Warning: The project may not work, update TPS API version [/color]")
+		print_rich("[color=#FFA500]"+str(json["message_invalid"])+"[/color]")
