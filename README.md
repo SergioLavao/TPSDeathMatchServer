@@ -21,7 +21,7 @@ Before you start building the Godot Project, make sure you have the required fil
 ### MacOS
 
 1. Download the file from the following link:
-   [build_macos_v0.0.9.zip](https://tpsmp-builds.s3.amazonaws.com/experimental/build_macos_v0.0.9.zip)
+   [build_macos_v0.0.9.dmg](https://tpsmp-builds.s3.amazonaws.com/experimental/build_macos_v0.0.9.dmg)
 2. Install the downloaded file.
 
 ## Building the Server
