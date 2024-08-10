@@ -1,13 +1,25 @@
-[gd_scene load_steps=18 format=3 uid="uid://1dmhw2gn7f41"]
+[gd_scene load_steps=20 format=3 uid="uid://1dmhw2gn7f41"]
 
 [ext_resource type="Script" path="res://Scripts/server.gd" id="1_n7nh6"]
-[ext_resource type="Texture2D" uid="uid://d0bkhdaim8ohq" path="res://Textures/PNG/Red/texture_04.png" id="2_8vagb"]
-[ext_resource type="Texture2D" uid="uid://dg5gabivv1cfc" path="res://Textures/PNG/Dark/texture_09.png" id="2_j82qv"]
+[ext_resource type="Texture2D" uid="uid://d0bkhdaim8ohq" path="res://3DModels/Textures/PNG/Red/texture_04.png" id="2_8vagb"]
+[ext_resource type="Texture2D" uid="uid://dg5gabivv1cfc" path="res://3DModels/Textures/PNG/Dark/texture_09.png" id="2_j82qv"]
 [ext_resource type="PackedScene" uid="uid://bwkedwpdmg40i" path="res://3DModels/Characters/Humanoids/soldiers/soldier.glb" id="3_6s3pa"]
-[ext_resource type="Texture2D" uid="uid://dx44x25k1kpa0" path="res://Textures/PNG/Green/texture_04.png" id="3_s3em2"]
-[ext_resource type="Texture2D" uid="uid://cgv3bl1sb4bnm" path="res://Textures/PNG/Orange/texture_04.png" id="4_ckscd"]
+[ext_resource type="Texture2D" uid="uid://dx44x25k1kpa0" path="res://3DModels/Textures/PNG/Green/texture_04.png" id="3_s3em2"]
+[ext_resource type="Texture2D" uid="uid://cgv3bl1sb4bnm" path="res://3DModels/Textures/PNG/Orange/texture_04.png" id="4_ckscd"]
+[ext_resource type="Texture2D" uid="uid://btfrjec0f24ly" path="res://3DModels/Textures/Marker.png" id="4_tgryt"]
 [ext_resource type="PackedScene" uid="uid://cilmng1gplnoe" path="res://3DModels/Characters/Humanoids/male/male.glb" id="8_1b3gl"]
 [ext_resource type="PackedScene" uid="uid://bmvbi7vg8jqr4" path="res://Vehicles/Cars/VehicleCarA.tscn" id="8_sxr1a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_olrpe"]
+texture = ExtResource("4_tgryt")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2gvd4"]
+properties/0/path = NodePath("../..:criminal_score_counter")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("../..:swat_score_counter")
+properties/1/spawn = true
+properties/1/replication_mode = 2
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_gn88m"]
 rayleigh_color = Color(0.417076, 0.529774, 0.736968, 1)
@@ -69,13 +81,58 @@ uv1_triplanar = true
 albedo_texture = ExtResource("4_ckscd")
 uv1_triplanar = true
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_3ho33"]
-
-[node name="Server" type="Node" node_paths=PackedStringArray("criminalSpawnPoint", "swatSpawnPoint")]
+[node name="Server" type="Node" node_paths=PackedStringArray("criminalSpawnPoint", "swatSpawnPoint", "criminalScoreLabel", "swatScoreLabel", "scoreSyncronizer")]
 script = ExtResource("1_n7nh6")
 characters = Array[PackedScene]([ExtResource("8_1b3gl"), ExtResource("3_6s3pa")])
 criminalSpawnPoint = NodePath("CriminalSpawnPoint")
 swatSpawnPoint = NodePath("SwatSpawnPoint")
+criminalScoreLabel = NodePath("UI/Score/SWAT")
+swatScoreLabel = NodePath("UI/Score/CRIMINAL")
+scoreSyncronizer = NodePath("UI/Score/ScoreSync")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Score" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.15
+offset_left = 0.399986
+theme_override_styles/panel = SubResource("StyleBoxTexture_olrpe")
+
+[node name="CRIMINAL" type="RichTextLabel" parent="UI/Score"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.324
+anchor_bottom = 1.0
+offset_bottom = -0.200005
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]0"
+
+[node name="SWAT" type="RichTextLabel" parent="UI/Score"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.00758911
+offset_right = -0.399963
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]0"
+
+[node name="ScoreSync" type="MultiplayerSynchronizer" parent="UI/Score"]
+delta_interval = 0.1
+replication_config = SubResource("SceneReplicationConfig_2gvd4")
 
 [node name="World" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4771, 0)
@@ -334,17 +391,20 @@ use_collision = true
 size = Vector3(8, 1.1, 0.2)
 material = SubResource("StandardMaterial3D_5ddww")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="World"]
-mesh = SubResource("CylinderMesh_3ho33")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.859033, 3.67673)
 
 [node name="CriminalSpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4421, 0.226112, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.2908, 0.226114, -8.6107)
 
 [node name="SwatSpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6663, 0.177852, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5958, 0.177852, -8.88114)
 
-[node name="VehicleCarA" parent="." instance=ExtResource("8_sxr1a")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.9085, 0.804708, -6.9749)
+[node name="VehicleCarA4" parent="." instance=ExtResource("8_sxr1a")]
+transform = Transform3D(0.999009, 0, 0.0445086, 0, 1, 0, -0.0445086, 0, 0.999009, -6.62971, 0.804708, -6.9749)
+
+[node name="VehicleCarA2" parent="." instance=ExtResource("8_sxr1a")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.477, 0.804708, -21.468)
+
+[node name="VehicleCarA3" parent="." instance=ExtResource("8_sxr1a")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 39.492, 0.804708, 2.68107)

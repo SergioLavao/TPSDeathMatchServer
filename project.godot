@@ -13,6 +13,7 @@ config_version=5
 config/name="TPS_MP_ServerEditor"
 run/main_scene="res://server.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/show_image=false
 
 [dotnet]
 
@@ -20,4 +21,4 @@ project/assembly_name="CIT_ServerEditor"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/TPS/plugin.cfg", "res://addons/serverplaybutton/plugin.cfg")
+enabled=PackedStringArray("res://addons/TPS/plugin.cfg")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://bmvbi7vg8jqr4"]
 
-[ext_resource type="Script" path="res://API/Vehicles/GDVehicleCar.gd" id="1_xwe8a"]
+[ext_resource type="Script" path="res://addons/TPS/API/Vehicles/GDVehicleCar.gd" id="1_xwe8a"]
 [ext_resource type="PackedScene" uid="uid://lmfcslpnwx0d" path="res://3DModels/Characters/Vehicles/car/car.glb" id="2_5jux3"]
-[ext_resource type="Script" path="res://API/Vehicles/GDVehicleSeat.gd" id="2_ucm8c"]
+[ext_resource type="Script" path="res://addons/TPS/API/Vehicles/GDVehicleSeat.gd" id="2_ucm8c"]
 [ext_resource type="Material" uid="uid://cu6ugilj3e534" path="res://Vehicles/Cars/VehicleCarAMat.tres" id="4_mdj0r"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fx3in"]
@@ -180,17 +180,17 @@ script = ExtResource("1_xwe8a")
 [node name="DriverSeat" type="Node" parent="." node_paths=PackedStringArray("enterPoint", "sitPoint", "doorMesh")]
 script = ExtResource("2_ucm8c")
 isDriverSeat = true
+openRotationTarget = Vector3(2.08165e-12, -90, 2.08165e-12)
 enterPoint = NodePath("../LEnterPoint")
 sitPoint = NodePath("../LSitPoint")
 doorMesh = NodePath("../car/doorL")
-openRotationTarget = Vector3(2.08165e-12, -90, 2.08165e-12)
 
 [node name="RSeat" type="Node" parent="." node_paths=PackedStringArray("enterPoint", "sitPoint", "doorMesh")]
 script = ExtResource("2_ucm8c")
+openRotationTarget = Vector3(2.08165e-12, 90, 2.08165e-12)
 enterPoint = NodePath("../REnterPoint")
 sitPoint = NodePath("../RSitPoint")
 doorMesh = NodePath("../car/doorR")
-openRotationTarget = Vector3(2.08165e-12, 90, 2.08165e-12)
 
 [node name="LEnterPoint" type="Marker3D" parent="."]
 transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 2.22648, -0.546825, 0)
